@@ -1,0 +1,37 @@
+// resources/en/dialog-macros/my-template.dialog.bxb
+template-macro-def (id) {
+  params {
+    param (x) {
+      type (Boolean)
+    }
+    param (y) {
+      type (Text)
+    }
+  }
+
+  content {
+    if (x) {
+      template ("#{y}")
+    } else {
+      template ("something else")
+    }
+  }
+}
+
+dialog (Result) {
+  match: MyCapsule.MyConcept (this)
+  template-macro (MyAwesomeMacro) {
+    param (concept) {
+      expression (this)
+    }
+    param (string2) {
+      literal ("some text")
+    }
+  }
+}
+
+ialog (Value) {
+  match: NumberOfAstronauts (this)
+
+    template("#{value (this)} #{concept (this)}")
+}
